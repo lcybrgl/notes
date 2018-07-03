@@ -1,0 +1,13 @@
+# Switch keyboard from console examples
+localectl set-x11-keymap "us,ru" pc105 "" grp:alt_shift_toggle
+setxkbmap -layout us,ru -option "grp:alt_shift_toggle,grp_led:scroll"
+
+# Layout config X11 example
+Section "InputClass"
+        Identifier "system-keyboard"
+        MatchIsKeyboard "on"
+        Option "XkbLayout" "us,ru"
+        Option "XkbModel" "pc105"
+        Option "XkbVariant" ",winkeys"
+        Option "XkbOptions" "grp:alt_shift_toggle"
+EndSection

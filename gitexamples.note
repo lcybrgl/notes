@@ -1,0 +1,30 @@
+echo "# somefiles" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/lcybrgl/somefiles.git
+git push --set-upstream origin master
+
+#--allow-unrelated-histories
+
+# track remote branch
+git branch -u upstream/foo
+
+# checkout remote branch and track
+git co --track origin/gispi
+git co -b gispi origin/gispi
+
+
+# Create a new branch:
+git checkout -b feature_branch_name
+
+# Edit, add and commit your files.
+# Push your branch to the remote repository:
+git push -u origin feature_branch_name
+
+# Remove remote branch
+git push [remotename] [localbranch]:[remotebranch]
+git push origin :bugfix
+
+git fetch --all --prune
+
