@@ -1,0 +1,3 @@
+# Rsync list of files example
+#
+rsync -arv --files-from=[path to list of files] [host_src]:[path_src] [host_dest]:[path_dest]
