@@ -1,0 +1,16 @@
+cryptsetup --verbose --cipher aes-xts-plain64 --key-size 512 --hash sha512 --iter-time 5000 --use-random luksFormat /dev/sdc2
+cryptsetup open --type luks /dev/sdc2 crypt
+mkfs.ext4 /dev/mapper/crypt
+mount /dev/mapper/crypt /usb
+pacstrap /usb base base-devel
+mount /dev/sdc1 /usb/boot/efi
+pacman -S mkinitcpio
+/etc/mkinitcpio.conf <- HOOKS=(base udev block autodetect modconf encrypt filesystems keyboard fsck)
+mkinitcpio -p linux
+lsblk -no NAME,UUID /dev/sdc
+pacman -S grub efibootmgr dosfstools
+into /etc/default/grub -> cryptdevice=/dev/disk/by-uuid/diskid:crypt
+enable cryptodevice option /etc/default/grub
+grub-install /dev/sdc
+grub-mkconfig -o /boot/grub/grub.cfg
+
