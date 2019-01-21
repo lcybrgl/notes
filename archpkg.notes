@@ -1,0 +1,18 @@
+# list of all the explicitly installed packages can be useful, to backup a system for example or speed up installation on a new system:
+pacman -Qqe > pkglist.txt
+
+# With option -t, the packages already required by other explicitly installed packages are not mentioned. If reinstalling from this list they will be installed but as dependencies only.
+
+# With option -n, foreign packages (e.g. from AUR) would be omitted from the list.
+
+# To also create a list of the installed optional dependencies which can be reinstalled with --asdeps.
+comm -13 <(pacman -Qqdt | sort) < (pacman -Qqdtt | sort) > optdeplist.txt
+
+# To create the list of AUR and other foreign packages that have been explicitly installed.
+pacman -Qqem > foreignpkglist.txt
+
+# Install packages from list
+pacman -S --needed - < pkglist.txt
+
+# Basically looks for all lines in second-file.txt which don't match any line in first-file.txt
+grep -Fxv -f first-file.txt second-file.txt
