@@ -1,0 +1,5 @@
+# Delete empty lines
+sed '/^$/d' /tmp/data.txt
+
+# Delete empty lines and comments
+sed '/^$/d; /^#/d' /path/to/file
