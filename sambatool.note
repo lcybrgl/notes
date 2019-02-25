@@ -1,0 +1,20 @@
+samba-tool dns add <Your-AD-DNS-Server-IP-or-hostname> samdom.example.com demo A 10.99.0.55
+
+samba-tool dns add <Your-AD-DNS-Server-IP-or-hostname> samdom.example.com _demo._tcp SRV 'demo.samdom.example.com 8080 0 100'
+
+samba-tool dns add <Your-AD-DNS-Server-IP-or-hostname> 0.99.10.in-addr.arpa 55 PTR demo.samdom.example.com
+
+samba-tool dns update <Your-AD-DNS-Server-IP-or-hostname> samdom.example.com demo A 10.99.0.55 10.99.0.66
+
+samba-tool dns delete <Your-AD-DNS-Server-IP-or-hostname> samdom.example.com demo A 10.99.0.55
+
+samba-tool dns query <Your-AD-DNS-Server-IP-or-hostname> <zone-name> @ ALL -U administrator
+
+samba-tool dns zonecreate <Your-AD-DNS-Server-IP-or-hostname> 0.99.10.in-addr.arpa
+
+samba-tool dns zonedelete <Your-AD-DNS-Server-IP-or-hostname> 0.99.10.in-addr.arpa
+
+samba-tool dns zonelist <Your-AD-DNS-Server-IP-or-hostname> --secondary -U administrator
+
+samba-tool dns zoneinfo <Your-AD-DNS-Server-IP-or-hostname> <zone-name> -U administrator
+

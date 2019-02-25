@@ -1,0 +1,1 @@
+youtube-dl -x --audio-format mp3 -o "/home/hdd/cybrg/Media/Blade-Synthwave.%(ext)s" https://www.youtube.com/watch\?v\=O0gdKb65FbI\&list\=LLACDdsmtq_sjcmvI8wOdUWA\&index\=2\&t\=0s --no-playlist
