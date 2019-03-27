@@ -29,3 +29,9 @@ pg_restore -U postgres -d dbname -j 6 some-dir-dump
 # Faster than directory
 dbcreate -U postgres dbname
 pg_restore -U postgres -d dbname -j 6 some-file.dump
+
+SELECT pg_terminate_backend (pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'target_database';
+
+alter subscription rms_subscription disable;
+alter subscription rms_subscription set (slot_name = NONE);
+drop subscription rms_subscription;
