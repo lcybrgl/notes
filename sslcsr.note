@@ -41,3 +41,10 @@ openssl x509 -noout -modulus -in domain.crt | openssl md5
 openssl req -noout -modulus -in domain.csr | openssl md5
 # If the output of each command is identical there is an extremely
 # high probability that the private key, certificate, and CSR are related.
+
+echo | openssl s_client -connect kplatform.ru:443 -servername kplatform.ru -tlsextdebug 2>/dev/null | openssl x509 -noout -dates 2>/dev/null | grep notAfter | cut -d'=' -f2
+
+keytool -list -v -keystore /etc/ssl/certs/java/cacerts > javacert
+echo "keytool -list -v -keystore /etc/ssl/certs/java/cacerts" > ~/java_keytool
+echo "keytool -import -v -trustcacerts -alias eom.sochisirius.ru -file school.crt -keystore /etc/ssl/certs/java/cacerts" >> ~/java_keytool
+
