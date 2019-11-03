@@ -1,0 +1,9 @@
+$ sudo pacman -Rn yaourt package-query
+$ sudo pacman -S fakeroot
+$ git clone https://aur.archlinux.org/package-query.git
+$ cd package-query
+$ makepkg -si
+$ git clone https://aur.archlinux.org/yaourt.git
+$ cd yaourt
+$ makepkg -si
+
